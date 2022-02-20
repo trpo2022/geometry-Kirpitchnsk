@@ -1,8 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-    int
-    ukazatel(char c[], char p, int i) {
+int ukazatel(char c[], char p, int i) {
   int ukaz = 0;
   while (c[i] != '\0') {
     if (c[i] == p) {

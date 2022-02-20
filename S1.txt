@@ -1,0 +1,4 @@
+circle(2 4,0.5)
+circle(3 0,7)
+circle(4 1,6)
+circle(10 1,0.25)

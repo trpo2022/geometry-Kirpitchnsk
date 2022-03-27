@@ -1,9 +1,14 @@
+CFLAGS = -Wall -Wextra -Werror
 
-all: geometry
+bin/geometry: obj/src/geometry/geometry.o obj/src/libgeometry/functions.o
+		$(CC) $(CFLAGS) -o $@ $^
 
-geometry: geometry.c
-	gcc -Wall -Werror -o geometry geometry.c
+obj/src/geometry/geometry.o: src/geometry/geometry.c
+		$(CC) -c $(CFLAGS) -o $@ $<
+
+obj/src/libgeometry/functions.o: src/libgeometry/functions.c
+		$(CC) -c $(CFLAGS) -o $@ $<
+run: 
+		./*geometry
 clean:
-	rm geometry
-run:
-	./geometry
+		rm -f bin/* obj/src/geometry*.o obj/src/libgeometry*.o

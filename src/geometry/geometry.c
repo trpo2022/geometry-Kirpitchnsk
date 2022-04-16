@@ -7,76 +7,60 @@
 #include <stdlib.h>
 #include <string.h>
 const double pi = 3.1415926535898;
-int ukazatel(char c[], char p, int i) {
-  int ukaz = 0;
-  while (c[i] != '\0') {
-    if (c[i] == p) {
-      ukaz = i;
-      break;
-    }
-    i++;
-  }
-  return ukaz;
-}
-int countelement(char c[], char p) {
-  int count = 0;
-  int i = 0;
-  while (c[i] != '\0') {
-    if (c[i] == p) {
-      count++;
-    }
-    i++;
-  }
-  return count;
-}
-double side(double x1, double y1, double x2, double y2) {
-  return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-}
-double area_of_circle(double radius) { return pi * pow(radius, 2); }
-double area_of_triangle(double a, double b, double c) {
-  double halfperimeter = (a + b + c) / 2;
-  double area = sqrt(halfperimeter * (halfperimeter - a) * (halfperimeter - b) *
-                     (halfperimeter - c));
-  return area;
-}
-void make_string_null(char c[]) {
-  int i;
-  for (i = 0; i < strlen(c); i++) {
-    c[i] = ' ';
-  }
-}
-bool num_check(char c[]) {
-  int i, k = 0;
-  for (i = ukazatel(c, '(', 0); i < ukazatel(c, ')', 0); i++) {
-    if (!isdigit(c[i]) && !isspace(c[i]) && !ispunct(c[i])) {
-      k++;
-    }
-  }
-  if (k > 0) {
-    return false;
-  } else {
-    return true;
-  }
-}
+struct circle {
+  double x;
+  double y;
+  double rradius;
+  double pperimeter;
+  double aarea;
+} one[50];
+struct triangle {
+  double xsides[4];
+  double ysides[4];
+  double ppperimeter;
+  double aaarea;
+} two[50];
+struct polygon {
+  double xxsides[10];
+  double yysides[10];
+  double pppperimeter;
+  double aaaarea;
+  int sidenumber;
+} three[50];
+struct shape {
+  struct circle one[50];
+  struct triangle two[50];
+  struct polygon three[50];
+  int fnumber;
+  int countfigure;
+  char string[100];
+} f[50];
 int main() {
   FILE *S1;
-  int i = 1;
+  int i = 0, q = 0;
+  char filename[100];
   bool mistake = false;
   char arr[1000];
-  S1 = fopen("S1.txt", "r");
-  if ((S1 = fopen("S1.txt", "r")) == NULL) {
+  struct shape f[50];
+  gets(filename);
+  if ((S1 = fopen(filename, "r")) == NULL) {
     printf("Fatal: file can not open because does not excist");
     getchar();
     return 0;
   }
-  while (fgets(arr, 1000, S1) != NULL) {
-    printf("\n%s\n", arr);
+  S1 = fopen(filename, "r");
+  while (fgets(arr, 100, S1) != NULL) {
+    int len = ukazatel(arr, '(', 0);
+    int cirnum = 0, trinum = 0, polynum = 0, number = 0;
+    strcpy(f[i].string, arr);
+    // printf("%d and %d\n",ukazatel(arr,')',0),strlen(arr)-3);
     if ((strstr(arr, "circle") == NULL && !(strstr(arr, "triangle") != NULL ||
                                             strstr(arr, "polygon") != NULL)) ||
         (strstr(arr, "triangle") == NULL &&
          !(strstr(arr, "circle") != NULL || strstr(arr, "polygon") != NULL)) ||
         (strstr(arr, "polygon") == NULL &&
          !(strstr(arr, "circle") != NULL || strstr(arr, "triangle") != NULL))) {
+      printf("\n%s\n", arr);
       printf("Error at column %d: expected 'circle, triangle or polygon'\n", i);
       mistake = true;
     }
@@ -89,29 +73,33 @@ int main() {
       printf("Error at column %d: expected 'circle, triangle or polygon'\n", i);
       mistake = true;
     }
-    if (((countelement(arr, '(') == 0) || (countelement(arr, ')') == 0)) &&
-        (strstr(arr, "circle") != 0)) {
+    if (((countelement(arr, '(') == NULL) ||
+         (countelement(arr, ')') == NULL)) &&
+        (strstr(arr, "circle") != NULL)) {
+      printf("\n%s\n", arr);
       printf("Error at column %d: expected ')' or '('\n", i);
       mistake = true;
     }
     if (((strstr(arr, "((") == NULL) || ((strstr(arr, "))") == NULL))) &&
         (strstr(arr, "triangle") != NULL || strstr(arr, "polygon") != NULL)) {
+      printf("\n%s\n", arr);
       printf("Error at column %d: expected ')' or '('\n", i);
       mistake = true;
     }
     if ((ukazatel(arr, ')', 8) < strlen(arr) - 3) &&
         (strstr(arr, "circle") != 0)) {
-      // printf("%d\n",strlen(arr));
+      printf("\n%s\n", arr);
       printf("Error at column %d: unexpected token\n", i);
       mistake = true;
     }
     if ((ukazatel(arr, ')', (ukazatel(arr, ')', 8) + 1)) < strlen(arr) - 3) &&
         ((strstr(arr, "triangle") != 0) || strstr(arr, "polygon") != 0)) {
-      // printf("%d\n",strlen(arr));
+      printf("\n%s\n", arr);
       printf("Error at column %d: unexpected token\n", i);
       mistake = true;
     }
     if (!num_check(arr)) {
+      printf("\n%s\n", arr);
       printf("Error at column %d: expected '<double>'\n", i);
       mistake = true;
     }
@@ -121,6 +109,8 @@ int main() {
       double x1, y1, radius;
       if (strstr(arr, "circle") != NULL &&
           (strstr(arr, "triangle") == NULL || strstr(arr, "polygon") == NULL)) {
+        f[i].fnumber = 1;
+        f[i].countfigure = cirnum;
         int comma = ukazatel(arr, ',', 0);
         int space = ukazatel(arr, ' ', 0);
         char x1c[30] = "", y1c[30] = "", radiusc[30] = "";
@@ -150,8 +140,12 @@ int main() {
         radius = atof(radiusc);
         double perimeter = 2 * pi * radius;
         double area = area_of_circle(radius);
-        printf("censer in(%5.4lf %5.4lf)\nperimeter = %5.4lf\narea = %5.4lf\n",
-               x1, y1, perimeter, area);
+        f[i].one[cirnum].x = x1;
+        f[i].one[cirnum].y = y1;
+        f[i].one[cirnum].rradius = radius;
+        f[i].one[cirnum].aarea = area;
+        f[i].one[cirnum].pperimeter = perimeter;
+        cirnum++;
       }
       if (strstr(arr, "triangle") != NULL &&
           (strstr(arr, "circle") == NULL || strstr(arr, "polygon") == NULL)) {
@@ -159,6 +153,8 @@ int main() {
         int j, k = 0, space = 0, comma = 0;
         char x1c[30] = "", y1c[30] = "", x2c[30] = "", y2c[30] = "",
              x3c[30] = "", y3c[30] = "", x4c[30] = "", y4c[30] = "";
+        f[i].fnumber = 2;
+        f[i].countfigure = trinum;
         space = ukazatel(arr, ' ', 0);
         comma = ukazatel(arr, ',', 0);
         for (j = ukazatel(arr, '(', 0) + 1; j < space; j++) {
@@ -249,17 +245,30 @@ int main() {
         }
         double perimeter = AB + AC + BC;
         double area = area_of_triangle(AB, BC, AC);
-        printf("perimeter = %5.4lf\narea = %5.4lf\n", perimeter, area);
+        f[i].two[trinum].xsides[0] = x1;
+        f[i].two[trinum].xsides[1] = x2;
+        f[i].two[trinum].xsides[2] = x3;
+        f[i].two[trinum].xsides[3] = x4;
+        f[i].two[trinum].ysides[0] = y1;
+        f[i].two[trinum].ysides[1] = y2;
+        f[i].two[trinum].ysides[2] = y3;
+        f[i].two[trinum].ysides[3] = y4;
+        f[i].two[trinum].aaarea = area;
+        f[i].two[trinum].ppperimeter = perimeter;
+        trinum++;
       }
       if (strstr(arr, "polygon") != NULL &&
           (strstr(arr, "triangle") == NULL || strstr(arr, "circle") == NULL)) {
         int sidecount = countelement(arr, ' ') - 1;
+        f[i].fnumber = 3;
+        f[i].countfigure = polynum;
+        f[i].three[polynum].sidenumber = sidecount;
         char number[30];
         double perimeter, area;
         double *xsides = (double *)malloc((sidecount + 1) * sizeof(double));
         double *ysides = (double *)malloc((sidecount + 1) * sizeof(double));
         double *sides = (double *)malloc(sidecount * sizeof(double));
-        int comma, space = 0, k = 0, z, m;
+        int comma = 0, space = 0, k = 0, z, m;
         comma = ukazatel(arr, '(', ukazatel(arr, '(', 0));
         space = ukazatel(arr, ' ', 0);
         for (z = 0; z < sidecount + 1; z++) {
@@ -302,14 +311,22 @@ int main() {
           area += (xsides[m - 1] * ysides[m] - xsides[m] * ysides[m - 1]);
         }
         area = 0.5 * abs(area);
-        printf("perimeter = %5.4lf\narea = %5.4lf\n", perimeter, area);
+        // printf("perimeter = %5.4lf\narea = %5.4lf\n",perimeter,area);
+        f[i].three[polynum].aaaarea = area;
+        f[i].three[polynum].pppperimeter = perimeter;
+        for (m = 0; m < sidecount + 1; m++) {
+          f[i].three[polynum].xxsides[m] = xsides[m];
+          f[i].three[polynum].yysides[m] = ysides[m];
+        }
         free(xsides);
         free(ysides);
         free(sides);
+        polynum++;
       }
     }
     i++;
   }
+  print(f, i);
   fclose(S1);
   getchar();
   return 0;

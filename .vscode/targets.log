@@ -1,16 +1,27 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
+ 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun Feb 20 23:14:14 2022
+ 
+# Make data base, printed on Sun Apr 24 01:11:50 2022
+ 
 
 # Variables
+ 
 
+ 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
@@ -43,9 +54,11 @@ SHELL = /bin/sh
 # environment
 GDM_LANG = ru
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"f285da8fcd0c728318ac417b7b600c3d.ru","_translationsConfigFile":"/home/vadim/.config/Code/clp/f285da8fcd0c728318ac417b7b600c3d.ru/tcf.json","_cacheRoot":"/home/vadim/.config/Code/clp/f285da8fcd0c728318ac417b7b600c3d.ru","_resolvedLanguagePackCoreLocation":"/home/vadim/.config/Code/clp/f285da8fcd0c728318ac417b7b600c3d.ru/5554b12acf27056905806867f251c859323ff7e9","_corruptedFile":"/home/vadim/.config/Code/clp/f285da8fcd0c728318ac417b7b600c3d.ru/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"2b7693ea843d12cbb2e09a3b62281ac8.ru","_translationsConfigFile":"/home/vadim/.config/Code/clp/2b7693ea843d12cbb2e09a3b62281ac8.ru/tcf.json","_cacheRoot":"/home/vadim/.config/Code/clp/2b7693ea843d12cbb2e09a3b62281ac8.ru","_resolvedLanguagePackCoreLocation":"/home/vadim/.config/Code/clp/2b7693ea843d12cbb2e09a3b62281ac8.ru/dfd34e8260c270da74b5c2d86d61aee4b6d56977","_corruptedFile":"/home/vadim/.config/Code/clp/2b7693ea843d12cbb2e09a3b62281ac8.ru/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
+# makefile (from 'Makefile', line 1)
+CFLAGS = -Wall -Wextra -Werror
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
 # environment
@@ -77,13 +90,15 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/vadim-virtual-machine:@/tmp/.ICE-unix/1182,unix/vadim-virtual-machine:/tmp/.ICE-unix/1182
+SESSION_MANAGER = local/vadim-virtual-machine:@/tmp/.ICE-unix/1305,unix/vadim-virtual-machine:/tmp/.ICE-unix/1305
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile', line 2)
+CCFLAGS = -Wall -Wextra -Wconversion -Wredundant-decls -Wshadow -Wno-unused-parameter
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=4c39dfba-4044-4dca-b92f-503c121f6a35&iid=4c39dfba-4044-4dca-b92f-503c121f6a35&sid=4c39dfba-4044-4dca-b92f-503c121f6a35","uploadToServer":true}
+ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -92,12 +107,13 @@ XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/vadim
 LS_COLORS = 
 # environment
 INSIDE_NEMO_PYTHON = 
+ 
 # environment
 XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2932
+GIO_LAUNCHED_DESKTOP_FILE_PID = 12457
 # automatic
 %F = $(notdir $%)
 # environment
@@ -113,19 +129,19 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1269
+SSH_AGENT_PID = 1393
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/vadim
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/vadim/.config/Code/CachedData/5554b12acf27056905806867f251c859323ff7e9
+VSCODE_CODE_CACHE_PATH = /home/vadim/.config/Code/CachedData/dfd34e8260c270da74b5c2d86d61aee4b6d56977
 # environment
 LOGNAME = vadim
 # environment
@@ -134,7 +150,6 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
 GNOME_DESKTOP_SESSION_ID = this-is-deprecated
- 
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
@@ -148,7 +163,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2498d46b-cf7c-444e-adaa-afd0a1e326d0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-22bde802-bfe4-4805-bb7e-1c665845f600.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -170,15 +185,13 @@ LANGUAGE = ru
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-9b987b39-1.64.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-9b987b39-1.66.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
-# environment
-BREAKPAD_DUMP_LOCATION = /home/vadim/.config/Code/exthost Crash Reports
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -186,15 +199,17 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+CINNAMON_VERSION = 5.2.7
+# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
-ELECTRON_RUN_AS_NODE = 1
-# environment
 LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
@@ -203,14 +218,16 @@ SUFFIXES :=
 CHROME_DESKTOP = code-url-handler.desktop
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3142
+VSCODE_PID = 12457
 # variable set hash-table stats:
-# Load=99/1024=10%, Rehash=0, Collisions=8/127=6%
+# Load=102/1024=10%, Rehash=0, Collisions=8/127=6%
 
 # Pattern-specific Variable Values
 
@@ -218,9 +235,9 @@ VSCODE_PID = 3142
 
 # Directories
 
-# . (device 2053, inode 552087): 14 files, no impossibilities.
+# . (device 2053, inode 552087): 23 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -233,19 +250,15 @@ all: geometry
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
-
-# Not a target:
-geometry.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-02-20 22:17:37.268543628
-#  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-.SUFFIXES:
+t.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -253,9 +266,38 @@ geometry.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-20 23:14:14.669188407
+#  Last modified 2022-04-24 00:29:31.09578271
 #  File has been updated.
 #  Successfully updated.
+
+obj/src/geometry/geometry.o: src/geometry/geometry.c
+#  Implicit rule search has not been done.
+#  Last modified 2022-04-23 23:37:56.751703576
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 21):
+	gcc -c -I src $(CFLAGS) -o $@ $< -lm
+
+test: test-functions.o t.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 15):
+	gcc $(LDFLAGS) main.o geometry_test.o -o tests -lm
+
+# Not a target:
+src/libgeometry/functions.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-23 23:34:21.950506211
+#  File has been updated.
+#  Successfully updated.
+
+test-functions.o: test/test-functions.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 9):
+	gcc -c $(CCFLAGS) -o $@ $< -lm
 
 # Not a target:
 .DEFAULT:
@@ -263,61 +305,93 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+test-geometry.o: test/test-geometry.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 12):
+	gcc -c $(CCFLAGS) -o $@ $< -lm
+
+bin/geometry: obj/src/geometry/geometry.o obj/src/libgeometry/libgeometry.a
+#  Implicit rule search has not been done.
+#  Last modified 2022-04-23 23:37:56.89170176
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 18):
+	gcc $(CFLAGS) -o $@ $^ -lm
+
 run:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 9):
-	./geometry
+#  recipe to execute (from 'Makefile', line 30):
+	bin/geometry
 
 clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 35):
+	rm obj/src/libgeometry/*.a obj/src/libgeometry/*.o obj/src/geometry/*.o bin/geometry
+	rm -f tests *.o
+
+geometry: bin/geometry
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/geometry/geometry.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-04-23 23:37:47.53982312
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test/test-functions.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
-	rm geometry
 
-geometry: geometry.c
+# Not a target:
+test/test-geometry.c:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  Last modified 2022-02-20 18:42:09.647065699
+#  Modification time never checked.
+#  File has not been updated.
+
+obj/src/libgeometry/functions.o: src/libgeometry/functions.c
+#  Implicit rule search has not been done.
+#  Last modified 2022-04-23 23:34:37.826297824
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := geometry
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := geometry.c
-# automatic
-# | := 
-# automatic
-# < := geometry.c
-# automatic
-# ^ := geometry.c
-# automatic
-# ? := geometry.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 5):
-	gcc -Wall -Werror -o geometry geometry.cat
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 27):
+	gcc -c -I src $(CFLAGS) -o $@ $< -lm
+
+obj/src/libgeometry/libgeometry.a: obj/src/libgeometry/functions.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-04-23 23:34:37.842297614
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 24):
+	ar rcs $@ $^
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/23=0%
+# Load=20/1024=2%, Rehash=0, Collisions=0/49=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 169 B / avg = 8 B
-# current buf: size = 8162 B / used = 169 B / count = 21 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 43 / storage = 603 B / avg = 14 B
+# current buf: size = 8162 B / used = 603 B / count = 43 / avg = 14 B
 
-# strcache performance: lookups = 34 / hit rate = 38%
+# strcache performance: lookups = 68 / hit rate = 36%
+ 
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=1/34=3%
-# Finished Make data base on Sun Feb 20 23:14:14 2022
+# Load=43/8192=1%, Rehash=0, Collisions=1/68=1%
+# Finished Make data base on Sun Apr 24 01:11:50 2022
 
  

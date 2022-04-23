@@ -1,21 +1,36 @@
 CFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Wconversion -Wredundant-decls -Wshadow -Wno-unused-parameter
+
+all: geometry
+
+geometry: bin/geometry
+
+test-functions.o: test/test-functions.c
+	gcc -c $(CCFLAGS) -o $@ $< -lm
+
+test-geometry.o: test/test-geometry.c
+	gcc -c $(CCFLAGS) -o $@ $< -lm
+
+test: test-functions.o t.o
+	gcc $(LDFLAGS) main.o geometry_test.o -o tests -lm
 
 bin/geometry: obj/src/geometry/geometry.o obj/src/libgeometry/libgeometry.a
-	$(CC) $(CFLAGS) -o $@ $^
-bin/test-geometry: obj/src/libgeometry/libgeometry.a ctest.h obj/src/libgeometry/test-geometry.o
-	$(CC) $(CFLAGS) -o $@ $^
-obj/src/geometry/test-geometry.o: ctest.h obj/src/geometry/test-geometry.c
-	$(CC) -c $(CFLAGS) -o $@ $<
-obj/src/geometry/geometry.o: obj/src/geometry/geometry.c
-	$(CC) -c $(CFLAGS) -o $@ $<
-obj/src/libgeometry/libgeometry.a: obj/src/libgeometry/functions.o
+	gcc $(CFLAGS) -o $@ $^ -lm
+
+obj/src/geometry/geometry.o: src/geometry/geometry.c
+	gcc -c -I src $(CFLAGS) -o $@ $< -lm
+
+obj/src/libgeometry/libgeometry.a: obj/src/libgeometry/functions.o 
 	ar rcs $@ $^
-obj/src/libgeometry/functions.o: obj/src/libgeometry/functions.c
-	$(CC) -c $(CFLAGS) -o $@ $<
-run: 
-	./*geometry
-test:
-	./*geometry-test
+
+obj/src/libgeometry/functions.o: src/libgeometry/functions.c
+	gcc -c -I src $(CFLAGS) -o $@ $< -lm
+
+run:
+	bin/geometry
+
+.PHONY: clean
+
 clean:
-	rm -f bin/* obj/src/geometry*.o obj/src/libgeometry*.o obj/src/test-geometry*.o obj/src/functions*.o
--include geometry.d functions.d
+	rm obj/src/libgeometry/*.a obj/src/libgeometry/*.o obj/src/geometry/*.o bin/geometry
+	rm -f tests *.o

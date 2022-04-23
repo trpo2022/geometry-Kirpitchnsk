@@ -6,7 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-const double pi = 3.1415926535898;
+
+#include <libgeometry/functions.c>
+
+
+/*const double pi = 3.1415926535898;
 struct circle {
   double x;
   double y;
@@ -34,24 +38,21 @@ struct shape {
   int fnumber;
   int countfigure;
   char string[100];
-} f[50];
+} f[50];*/
 int main() {
   FILE *S1;
-  int i = 0, q = 0;
-  char filename[100];
+  int i = 0;
   bool mistake = false;
   char arr[1000];
   struct shape f[50];
-  gets(filename);
-  if ((S1 = fopen(filename, "r")) == NULL) {
+  if ((S1 = fopen("S1.txt", "r")) == NULL) {
     printf("Fatal: file can not open because does not excist");
     getchar();
     return 0;
   }
-  S1 = fopen(filename, "r");
+  S1 = fopen("S1.txt", "r");
   while (fgets(arr, 100, S1) != NULL) {
-    int len = ukazatel(arr, '(', 0);
-    int cirnum = 0, trinum = 0, polynum = 0, number = 0;
+    int cirnum = 0, trinum = 0, polynum = 0;
     strcpy(f[i].string, arr);
     if ((strstr(arr, "circle") == NULL && !(strstr(arr, "triangle") != NULL ||
                                             strstr(arr, "polygon") != NULL)) ||
@@ -72,8 +73,7 @@ int main() {
       printf("Error at column %d: expected 'circle, triangle or polygon'\n", i);
       mistake = true;
     }
-    if (((countelement(arr, '(') == NULL) ||
-         (countelement(arr, ')') == NULL)) &&
+    if (((countelement(arr, '(') == 0) || (countelement(arr, ')') == 0)) &&
         (strstr(arr, "circle") != NULL)) {
       printf("\n%s\n", arr);
       printf("Error at column %d: expected ')' or '('\n", i);
@@ -85,13 +85,14 @@ int main() {
       printf("Error at column %d: expected ')' or '('\n", i);
       mistake = true;
     }
-    if ((ukazatel(arr, ')', 8) < strlen(arr) - 3) &&
+    if ((ukazatel(arr, ')', 8) + 3 < (int)(strlen(arr))) &&
         (strstr(arr, "circle") != 0)) {
       printf("\n%s\n", arr);
       printf("Error at column %d: unexpected token\n", i);
       mistake = true;
     }
-    if ((ukazatel(arr, ')', (ukazatel(arr, ')', 8) + 1)) < strlen(arr) - 3) &&
+    if ((ukazatel(arr, ')', (ukazatel(arr, ')', 8) + 1)) <
+         (int)strlen(arr) - 3) &&
         ((strstr(arr, "triangle") != 0) || strstr(arr, "polygon") != 0)) {
       printf("\n%s\n", arr);
       printf("Error at column %d: unexpected token\n", i);
@@ -309,7 +310,7 @@ int main() {
         for (m = 1; m < sidecount; m++) {
           area += (xsides[m - 1] * ysides[m] - xsides[m] * ysides[m - 1]);
         }
-        area = 0.5 * abs(area);
+        area = 0.5 * sqrt(pow(area, 2));
         f[i].three[polynum].aaaarea = area;
         f[i].three[polynum].pppperimeter = perimeter;
         for (m = 0; m < sidecount + 1; m++) {

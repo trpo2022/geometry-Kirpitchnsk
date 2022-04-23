@@ -53,7 +53,6 @@ int main() {
     int len = ukazatel(arr, '(', 0);
     int cirnum = 0, trinum = 0, polynum = 0, number = 0;
     strcpy(f[i].string, arr);
-    // printf("%d and %d\n",ukazatel(arr,')',0),strlen(arr)-3);
     if ((strstr(arr, "circle") == NULL && !(strstr(arr, "triangle") != NULL ||
                                             strstr(arr, "polygon") != NULL)) ||
         (strstr(arr, "triangle") == NULL &&
@@ -311,7 +310,6 @@ int main() {
           area += (xsides[m - 1] * ysides[m] - xsides[m] * ysides[m - 1]);
         }
         area = 0.5 * abs(area);
-        // printf("perimeter = %5.4lf\narea = %5.4lf\n",perimeter,area);
         f[i].three[polynum].aaaarea = area;
         f[i].three[polynum].pppperimeter = perimeter;
         for (m = 0; m < sidecount + 1; m++) {

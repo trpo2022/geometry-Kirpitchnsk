@@ -1,2 +1,4 @@
-*.exe
 *.o
+*.pub
+primer.cpp
+

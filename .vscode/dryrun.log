@@ -1,0 +1,7 @@
+make all --dry-run --keep-going --print-directory
+make: Entering directory '/home/vadim/geometry-Kirpitchnsk'
+ 
+Makefile:6: *** missing separator.  Stop.
+ 
+make: Leaving directory '/home/vadim/geometry-Kirpitchnsk'
+ 

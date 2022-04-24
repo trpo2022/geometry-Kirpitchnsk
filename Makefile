@@ -11,8 +11,8 @@ test-functions.o: test/test-functions.c
 test-geometry.o: test/test-geometry.c
 	gcc -c $(CCFLAGS) -o $@ $< -lm
 
-test: test-functions.o t.o
-	gcc $(LDFLAGS) main.o geometry_test.o -o tests -lm
+test: test-functions.o test-geometry.o
+	gcc $(LDFLAGS) test-functions.o test-geometry.o -o tests -lm
 
 bin/geometry: obj/src/geometry/geometry.o obj/src/libgeometry/libgeometry.a
 	gcc $(CFLAGS) -o $@ $^ -lm

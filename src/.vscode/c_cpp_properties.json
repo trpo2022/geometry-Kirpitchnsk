@@ -5,11 +5,7 @@
       "includePath": [
         "${workspaceFolder}/**"
       ],
-<<<<<<< HEAD
       "compilerPath": "/usr/bin/gcc",
-=======
-      "compilerPath": "/bin/gcc",
->>>>>>> lab-4
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "linux-gcc-x64",

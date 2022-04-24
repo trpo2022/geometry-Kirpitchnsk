@@ -1,5 +1,38 @@
-#include <libgeometry/functions.h>
+#include <ctype.h>
+#include <math.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+const double pi = 3.1415926535898;
+struct circle {
+  double x;
+  double y;
+  double rradius;
+  double pperimeter;
+  double aarea;
+} one[50];
+struct triangle {
+  double xsides[4];
+  double ysides[4];
+  double ppperimeter;
+  double aaarea;
+} two[50];
+struct polygon {
+  double xxsides[10];
+  double yysides[10];
+  double pppperimeter;
+  double aaaarea;
+  int sidenumber;
+} three[50];
+struct shape {
+  struct circle one[50];
+  struct triangle two[50];
+  struct polygon three[50];
+  int fnumber;
+  int countfigure;
+  char string[100];
+} f[50];
 int ukazatel(char c[], char p, int i) {
   int ukaz = 0;
   while (c[i] != '\0') {
@@ -34,11 +67,11 @@ double area_of_triangle(double a, double b, double c) {
 }
 void make_string_null(char c[]) {
   int i;
-  for (i = 0; i < strlen(c); i++) {
-    c[i] = "";
+  for (i = 0; i < (int)strlen(c); i++) {
+    c[i] = ' ';
   }
 }
-bool num_check(char c[]) {
+int num_check(char c[]) {
   int i, k = 0;
   for (i = ukazatel(c, '(', 0); i < ukazatel(c, ')', 0); i++) {
     if (!isdigit(c[i]) && !isspace(c[i]) && !ispunct(c[i])) {
@@ -46,12 +79,12 @@ bool num_check(char c[]) {
     }
   }
   if (k > 0) {
-    return false;
+    return 0;
   } else {
-    return true;
+    return 1;
   }
 }
-bool check_point(double *x, double *y, double x0, double y0) {
+int check_point(double *x, double *y, double x0, double y0) {
   double a = (x[0] - x0) * (y[1] - y[0]) - (x[1] - x[0]) * (y[0] - y0);
   double b = (x[1] - x0) * (y[2] - y[1]) - (x[2] - x[1]) * (y[1] - y0);
   double c = (x[2] - x0) * (y[0] - y[2]) - (x[0] - x[2]) * (y[2] - y0);
@@ -68,8 +101,8 @@ double distance_from_dot_to_line(double x0, double y0, double x1, double y1,
   double d = (A * x0 + B * y0 + C) / sqrt(A * A + B * B);
   return d;
 }
-bool line_intersection(double x1, double x2, double y1, double y2, double x3,
-                       double x4, double y3, double y4) {
+int line_intersection(double x1, double x2, double y1, double y2, double x3,
+                      double x4, double y3, double y4) {
   double A1 = y2 - y1;
   double B1 = x1 - x2;
   double C1 = y1 * x2 + x1 * y2;
@@ -77,17 +110,21 @@ bool line_intersection(double x1, double x2, double y1, double y2, double x3,
   double B2 = x3 - x4;
   double C2 = y3 * x4 + x3 * y4;
   if (A1 * B2 - B1 * A2 == 0) {
-    return false;
+    return 0;
   } else {
     double x = ((B1 * C2 - C1 * B2) / (A1 * B2 - B1 * A2));
     double y = ((C1 * A2 - A1 * C2) / (A1 * B2 - B1 * A2));
-    if (((abs(x - x1) + abs(x - x2) == abs(x1 - x2)) &&
-         (abs(y - y1) + abs(y - y2) == abs(y1 - y2))) &&
-        ((abs(x - x3) + abs(x - x4) == abs(x3 - x4)) &&
-         (abs(y - y3) + abs(y - y4) == abs(y3 - y4)))) {
-      return true;
+    if (((sqrt(pow(x - x1, 2)) + sqrt(pow(x - x2, 2)) ==
+          sqrt(pow(x1 - x2, 2))) &&
+         (sqrt(pow(y - y1, 2)) + sqrt(pow(y - y2, 2)) ==
+          sqrt(pow(y1 - y2, 2)))) &&
+        (sqrt(pow(x - y3, 2)) + sqrt(pow(x - x4, 2)) ==
+         sqrt(pow(x3 - x4, 2))) &&
+        (sqrt(pow(y - y3, 2)) + sqrt(pow(y - y4, 2)) ==
+         sqrt(pow(y3 - y4, 2)))) {
+      return 1;
     } else {
-      return false;
+      return 0;
     }
   }
 }
@@ -110,8 +147,9 @@ void intersection(struct shape f[], int o, int num) {
                          f[o].one[f[o].countfigure].rradius) {
               intersect = true;
             }
-            if (d < abs(f[i].one[f[i].countfigure].rradius -
-                        f[o].one[f[o].countfigure].rradius)) {
+            if (d < sqrt(pow((f[i].one[f[i].countfigure].rradius -
+                              f[o].one[f[o].countfigure].rradius),
+                             2))) {
               intersect = false;
             }
             if ((intersect == true) && (i != o)) {
@@ -161,6 +199,7 @@ void intersection(struct shape f[], int o, int num) {
         }
         intersect = false;
       }
+      break;
     }
     case 2: {
       for (i = 0; i < num; i++) {
@@ -226,6 +265,7 @@ void intersection(struct shape f[], int o, int num) {
         }
         intersect = false;
       }
+      break;
     }
     case 3: {
       for (i = 0; i < num; i++) {
@@ -298,6 +338,7 @@ void intersection(struct shape f[], int o, int num) {
         }
         intersect = false;
       }
+      break;
     }
     default: {
       break;

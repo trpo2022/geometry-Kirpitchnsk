@@ -7,12 +7,12 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "/home/vadim/geometry-Kirpitchnsk",
+      "cwd": "/home/vadim/geometry-Kirpitchnsk/src/geometry",
       "environment": [],
-      "program": "/home/vadim/geometry-Kirpitchnsk/build/Debug/outDebug",
+      "program": "/home/vadim/geometry-Kirpitchnsk/src/geometry/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
       "console": "integratedTerminal",
       "setupCommands": [
         {

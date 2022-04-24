@@ -39,6 +39,7 @@ struct shape {
   int countfigure;
   char string[100];
 } f[50];*/
+const double pi = 3.1415926535898;
 int main() {
   FILE *S1;
   int i = 0;

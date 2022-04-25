@@ -9,37 +9,6 @@
 
 #include <libgeometry/functions.c>
 
-
-/*const double pi = 3.1415926535898;
-struct circle {
-  double x;
-  double y;
-  double rradius;
-  double pperimeter;
-  double aarea;
-} one[50];
-struct triangle {
-  double xsides[4];
-  double ysides[4];
-  double ppperimeter;
-  double aaarea;
-} two[50];
-struct polygon {
-  double xxsides[10];
-  double yysides[10];
-  double pppperimeter;
-  double aaaarea;
-  int sidenumber;
-} three[50];
-struct shape {
-  struct circle one[50];
-  struct triangle two[50];
-  struct polygon three[50];
-  int fnumber;
-  int countfigure;
-  char string[100];
-} f[50];*/
-const double pi = 3.1415926535898;
 int main() {
   FILE *S1;
   int i = 0;

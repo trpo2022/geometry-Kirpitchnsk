@@ -1,0 +1,6 @@
+*.o
+*.pub
+*.d
+*.exe
+primer.cpp
+
